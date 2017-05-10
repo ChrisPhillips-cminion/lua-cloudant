@@ -23,7 +23,7 @@ end
 function Cloudant:new(tbl) 
   tbl = tbl or {}
   setmetatable(tbl, self)
-
+  print(tbl)
   self.__index = self
 
   assert(tbl.user)
