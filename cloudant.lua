@@ -37,12 +37,12 @@ function Cloudant:baseurl(baseuri)
 end
 
 function Cloudant:url(endpoint)
-  return self.baseuri:stringify(self.dbname .. '/' .. endpoint)
+  return self.baseuri .. '/' .. self.dbname .. '/' .. endpoint
 end
 
 function Cloudant:instanceurl(endpoint)
   
-  return self.baseuri:stringify(endpoint)
+  return self.baseuri .. '/' .. endpoint
 end
 
 function Cloudant:request(method, url, params, data)
