@@ -20,25 +20,17 @@ function dump(o)
   end
 end
 
-function Cloudant:new(tbl) 
-  tbl = tbl or {}
-  print(json.stringify(tbl))
---   setmetatable(tbl, self)
-  
-  self.__index = self
-
-  assert(tbl.user)
-  assert(tbl.password)
+function Cloudant:new(user,password,host) 
 
   self.baseuri = URI:new {
     scheme = 'https',
-    host = assert(tbl.host),
+    host = assert(host),
     path = ''
   }
   print(self.baseuri);
-  self.auth = "Basic " .. (mime.b64(string.format("%s:%s", tbl.user, tbl.password))) 
+  self.auth = "Basic " .. (mime.b64(string.format("%s:%s", user,password))) 
 
-  return tbl
+  return Cloudant
 end
 
 function Cloudant:database(name)
