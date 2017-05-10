@@ -5,7 +5,7 @@ local json = require("json")
 local mime = require("mime")
 local URI = require("uri")
 
-local Cloudant = { }
+local Cloudant = { baseuri = nil}
 
 function dump(o)
   if type(o) == 'table' then
@@ -20,15 +20,11 @@ function dump(o)
   end
 end
 
-function Cloudant:new(user,password,host) 
+function Cloudant:new(url) 
 
-  self.baseuri = URI:new {
-    scheme = 'https',
-    host = assert(host),
-    path = ''
-  }
+  self.baseuri = url
   print(self.baseuri);
-  self.auth = "Basic " .. (mime.b64(string.format("%s:%s", user,password))) 
+--   self.auth = nil"Basic " .. (mime.b64(string.format("%s:%s", user,password))) 
 
   return Cloudant
 end
