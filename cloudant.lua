@@ -34,7 +34,7 @@ function Cloudant:new(tbl)
     host = assert(tbl.host),
     path = ''
   }
-
+  print(self.baseuri);
   self.auth = "Basic " .. (mime.b64(string.format("%s:%s", tbl.user, tbl.password))) 
 
   return tbl
