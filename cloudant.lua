@@ -5,7 +5,7 @@ local json = require("json")
 local mime = require("mime")
 local URI = require("uri")
 
-local Cloudant = { baseuri = nil }
+local Cloudant = { }
 
 function dump(o)
   if type(o) == 'table' then
@@ -52,6 +52,7 @@ function Cloudant:url(endpoint)
 end
 
 function Cloudant:instanceurl(endpoint)
+  
   return self.baseuri:stringify(endpoint)
 end
 
