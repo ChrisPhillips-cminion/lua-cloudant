@@ -147,5 +147,14 @@ function Cloudant:changes(options)
     return self:request('GET', self:url('_changes'), options, nil)
 end
 
+function urlencode(str)
+   if (str) then
+      str = string.gsub (str, "\n", "\r\n")
+      str = string.gsub (str, "([^%w ])",
+         function (c) return string.format ("%%%02X", string.byte(c)) end)
+      str = string.gsub (str, " ", "+")
+   end
+   return str    
+end
 
 return Cloudant
