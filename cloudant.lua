@@ -43,6 +43,9 @@ end
 function Cloudant:database(name)
   self.dbname = assert(name)
 end
+function Cloudant:baseurl(baseuri)
+  self.baseuri = assert(baseuri)
+end
 
 function Cloudant:url(endpoint)
   return self.baseuri:stringify(self.dbname .. '/' .. endpoint)
